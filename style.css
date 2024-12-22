@@ -1,0 +1,163 @@
+/* Font and Color Variables */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 16px;
+}
+
+/* Intro Section */
+#intro {
+    height: 100vh;
+    background: linear-gradient(to right, #3b3b3b, #222);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.intro-content {
+    text-align: center;
+}
+
+#intro-text {
+    font-size: 48px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background: linear-gradient(to right, #FF416C, #FF4B2B); /* Gradient color */
+    -webkit-background-clip: text;
+    color: transparent; /* Use transparent color to make gradient visible */
+}
+
+#intro-text-2 {
+    font-size: 48px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background: linear-gradient(to right, #56CCF2, #2F80ED); /* Gradient color */
+    -webkit-background-clip: text;
+    color: transparent; /* Use transparent color to make gradient visible */
+}
+
+#courtesy {
+    font-size: 20px;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    color: #FF416C; /* Set a distinct color */
+}
+
+#main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Navigation */
+#navigation {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.nav-btn {
+    background: #4CAF50;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background: #45a049;
+}
+
+/* Chat Section */
+.chat-container {
+    width: 60%;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+    height: 300px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+}
+
+.chat-input-container {
+    display: flex;
+    justify-content: center;
+}
+
+.chat-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.btn {
+    background: #4CAF50;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #45a049;
+}
+
+/* Image Upload Section */
+.image-upload {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.image-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.image-preview {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    max-width: 200px;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: red;
+}
