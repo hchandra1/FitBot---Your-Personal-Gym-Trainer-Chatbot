@@ -99,3 +99,91 @@ document.getElementById('upload-btn').addEventListener('change', function (event
         displayMessage('User', 'Uploaded: ' + file.name);
     }
 });
+
+// Speech-to-text integration
+const recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognizer = new recognition();
+recognizer.continuous = false;
+recognizer.interimResults = false;
+
+recognizer.onresult = function(event) {
+    const transcript = event.results[0][0].transcript;
+    document.getElementById('chat-input').value = transcript;
+};
+
+recognizer.onerror = function(event) {
+    console.error('Speech recognition error:', event.error);
+    displayMessage('Bot', 'Sorry, I could not understand your voice.');
+};
+
+// Start voice input
+function startVoiceInput() {
+    recognizer.start();
+}
+
+// Add voice button
+const voiceBtn = document.createElement('button');
+voiceBtn.innerText = '🎙️ Voice Input';
+voiceBtn.className = 'btn';
+voiceBtn.onclick = startVoiceInput;
+document.body.appendChild(voiceBtn);
+
+// Auto-logout after inactivity
+let inactivityTimer;
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('keydown', resetTimer);
+
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(() => {
+        alert('Session timed out due to inactivity. Please refresh.');
+        window.location.href = 'index.html';
+    }, 300000); // 5 minutes
+} resetTimer();
+
+// Chatbot greeting message
+window.addEventListener('load', function () {
+    displayMessage('Bot', 'Welcome to FitBot! How can I assist you today?');
+});
+
+// Loading spinner for file uploads
+function showLoadingSpinner() {
+    const spinner = document.createElement('div');
+    spinner.className = 'spinner';
+    spinner.innerHTML = '⏳ Uploading...';
+    document.body.appendChild(spinner);
+    setTimeout(() => spinner.remove(), 3000); // Simulate 3 sec upload
+}
+
+document.getElementById('upload-btn').addEventListener('change', showLoadingSpinner);
+
+// Play sound when bot responds
+function playNotificationSound() {
+    const audio = new Audio('notification.mp3');
+    audio.play();
+}
+function displayMessage(sender, message) {
+    const chatBox = document.getElementById('chat-box');
+    const messageElement = document.createElement('p');
+    messageElement.textContent = `${sender}: ${message}`;
+    messageElement.style.color = sender === 'Bot' ? 'gray' : 'black';
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    if (sender === 'Bot') playNotificationSound();
+}
+
+// Save chat history
+function saveChatHistory() {
+    const chatBox = document.getElementById('chat-box').innerHTML;
+    localStorage.setItem('chatHistory', chatBox);
+}
+
+// Load chat history
+function loadChatHistory() {
+    const savedChat = localStorage.getItem('chatHistory');
+    if (savedChat) {
+        document.getElementById('chat-box').innerHTML = savedChat;
+    }
+}
+window.addEventListener('load', loadChatHistory);
+document.getElementById('send-btn').addEventListener('click', saveChatHistory);
