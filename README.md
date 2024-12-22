@@ -14,6 +14,7 @@ FitBot leverages HTML, CSS, and JavaScript to create a responsive, engaging chat
 ```
 /
 │
+├── app.py                # Chatbot server
 ├── index.html            # Home page (Landing page with intro animation)
 ├── chat.html             # Chat interface for interacting with FitBot
 ├── testimonials.html     # Placeholder for testimonials (Coming soon animation)
@@ -60,7 +61,7 @@ FitBot leverages HTML, CSS, and JavaScript to create a responsive, engaging chat
 - **CSS** – Adds styling, animations, and responsive design.
 - **JavaScript** – Powers chat interaction, page transitions, and dynamic content loading.
 - **JSON** – Manages chatbot responses, enabling FitBot to answer predefined fitness-related questions.
-
+- **Python** – Manages chatbot responses, enabling FitBot to answer predefined fitness-related questions.
 ---
 
 ## 📋 To-Do (Future Updates)
